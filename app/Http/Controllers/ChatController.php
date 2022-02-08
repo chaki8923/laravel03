@@ -110,7 +110,7 @@ class ChatController extends Controller
             ->get();
 
       Log::debug($stores);
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
         $link = route('chat.list', 0);
         return view('foods.all_mail_list', compact('stores','pertner', 'link','id'));
     }
