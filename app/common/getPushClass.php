@@ -14,7 +14,7 @@ class getPushClass{
             ->where('new_flg', true)
             ->where('to_store', session()->get('id'))
             ->where('from_store', '<>', session()->get('id'))
-            ->groupBy('store_name')
+            ->groupBy('stores.store_name')
             ->get();
 
             return $pertner;
