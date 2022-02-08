@@ -61,10 +61,11 @@ class AxiosController extends Controller
     //==========================メッセージ取得=============================
     public function get_message()
     {
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
+        
 
-        Log::debug('メッセージ取得:' . $pertner);
-        return $pertner;
+        // Log::debug('メッセージ取得:' . $pertner);
+        // return $pertner;
     }
     //=======================================================
     public function get_sub()

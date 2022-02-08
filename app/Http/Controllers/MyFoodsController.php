@@ -156,15 +156,15 @@ class MyFoodsController extends Controller
         $store = Store::find($id);
         $my_food_id = Food::where('store_id', $id)->select('id')->get();
 
-        $pertner = getPushClass::getPush();
-        Log::debug('push' . $pertner);
+        // $pertner = getPushClass::getPush();
+        // Log::debug('push' . $pertner);
         $detail_link = route('item_detail', 0);
 
-        if ($pertner->isEmpty()) {
-            $link = route('chat.list', 0);
-        } else {
-            $link = route('chat.list', $pertner[0]->food_id);
-        }
+        // if ($pertner->isEmpty()) {
+        //     $link = route('chat.list', 0);
+        // } else {
+        //     $link = route('chat.list', $pertner[0]->food_id);
+        // }
 
 
         $likes = Like::where('new_flg', true)
@@ -211,7 +211,7 @@ class MyFoodsController extends Controller
                 ->where('decision_flg', false)
                 ->get();
         }
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
         Log::debug('カテゴリー' . $categories);
         $link = route('chat.list', 0);
@@ -236,7 +236,7 @@ class MyFoodsController extends Controller
 
        $all_food = Food::all();
 
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
         //自分のID
         $u_id = session()->get('id');
@@ -269,7 +269,7 @@ class MyFoodsController extends Controller
 
         $category = Category::find($id);
         $sub_cat = SubCategory::where('parent_id', $category->api_id)->get();
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
         Log::debug('store中身' . $stores);
 
@@ -319,14 +319,14 @@ class MyFoodsController extends Controller
         $message_num = $messages->count();
 
         $root = route('like_list', $food->id);
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
 
-        if ($pertner->isEmpty()) {
-            $link = route('chat.list', 0);
-        } else {
-            $link = route('chat.list', $pertner[0]->food_id);
-        }
+        // if ($pertner->isEmpty()) {
+        //     $link = route('chat.list', 0);
+        // } else {
+        //     $link = route('chat.list', $pertner[0]->food_id);
+        // }
         $user_id = session()->get('id');
         return view('foods.fooddetail', compact('store', 'food', 'category', 'likes', 'like_one', 'message_num', 'sub_category', 'root', 'link', 'user_id', 'abater'));
     }
@@ -359,7 +359,7 @@ class MyFoodsController extends Controller
             ->join('address', 'stores.id', '=', 'address.store_id')
             ->where('address.store_id', $id)
             ->first();
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
         $link = route('chat.list', 0);
         $foods = Food::where('store_id', $id)->get();
         $foods_num = $foods->count();
@@ -382,14 +382,14 @@ class MyFoodsController extends Controller
             ->get();
         Log::debug($stores);
 
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
 
 
-        if ($pertner->isEmpty()) {
-            $link = route('chat.list', 0);
-        } else {
-            $link = route('chat.list', $pertner[0]->food_id);
-        }
+        // if ($pertner->isEmpty()) {
+        //     $link = route('chat.list', 0);
+        // } else {
+        //     $link = route('chat.list', $pertner[0]->food_id);
+        // }
 
 
         return view('foods.like_list', compact('stores', 'food', 'likes', 'pertner', 'link'));
@@ -417,14 +417,14 @@ class MyFoodsController extends Controller
     public function mypage_show()
     {
         $categories = Category::all();
-        $pertner = getPushClass::getPush();
+        // $pertner = getPushClass::getPush();
         // Log::debug('store中身'.$stores);
         $u_id = session()->get('id');
-        if ($pertner->isEmpty()) {
-            $link = route('chat.list', 0);
-        } else {
-            $link = route('chat.list', $pertner[0]->food_id);
-        }
+        // if ($pertner->isEmpty()) {
+        //     $link = route('chat.list', 0);
+        // } else {
+        //     $link = route('chat.list', $pertner[0]->food_id);
+        // }
         $detail_link = route('item_detail', 0);
         $edit_link = route('item_edit_show', 0);
         $delete_link = route('delete_food', 0);
